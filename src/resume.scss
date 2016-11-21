@@ -5,7 +5,6 @@
 $white: #efefef;
 $black: #323232;
 $blue: #3692c5;
-$pink: #ff6173;
 $deeppink: #ff1493;
 $purple: #ab98e8;
 $water: #43b891;
@@ -16,7 +15,6 @@ html{
 body{
     color: $white;
 }
-
 #loading{
     @include center;
     height: 3em;
@@ -39,3 +37,21 @@ body{
     bottom: 0.5rem;
     left: 1.5rem;
 }
+.bloc{
+    h1, h3, a.button{
+        text-align: center;
+    }
+}
+.bloc h1{
+    padding: 2rem 1rem;
+    font-size: 2rem;
+    color: $white;
+}
+
+
+
+
+
+
+
+

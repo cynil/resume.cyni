@@ -11,12 +11,11 @@ $(document).ready(function(){
         $tip.text(info)
         $bar.css({transform: 'scale(' + progress + ', 1)'})        
     }
-    if(!('ontouchstart' in window)) return $tip.text('浏览器不支持！:(')
+    if(!('ontouchstart' in window)) return $tip.html('桌面浏览器不支持！去看看<a href="http://cynil.github.io">静态页面</a>')
     hint('smooth正在初始化...', 0.15)
-
     var smooth = document.querySelector('main')
     window.app = new Smooth(smooth, {
-        animations: {},
+        animations: {typing: typing},
         methods: {}
     })
 
@@ -47,25 +46,14 @@ $(document).ready(function(){
         })
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function typing(node, parent){
+    var p = node.children[0],
+        content = p.innerHTML,
+        index = 0
+    p.innerHTML = ''
+    parent.appendChild(node)
+    var timer = setInterval(function(){
+        p.innerHTML += content[index++]
+        if(!content[index]) clearInterval(timer)
+    }, 150)
+}
