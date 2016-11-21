@@ -1,0 +1,41 @@
+@import "animation.scss";
+@import "mixin.scss";
+@import "../smooth/smooth.css";
+
+$white: #efefef;
+$black: #323232;
+$blue: #3692c5;
+$pink: #ff6173;
+$deeppink: #ff1493;
+$purple: #ab98e8;
+$water: #43b891;
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    color: $white;
+}
+
+#loading{
+    @include center;
+    height: 3em;
+    width: 12rem;
+    text-align: center;
+    color: $black;
+}
+#loading .progress-bar{
+    width: 100%;
+    height: 1rem;
+    background: $black;
+    margin: 0.5rem 0;
+    transition: transform 0.2s ease;
+    transform-origin: 0% 0%;
+    transform: scale(0, 1);
+    border-radius: 4px;
+}
+#page{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1.5rem;
+}
