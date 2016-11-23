@@ -1,8 +1,10 @@
+.shrinkIn{animation:shrinkIn 0.6s 1}
 @keyframes shrinkIn{
-    from{
-        transform: scale(3);
-    }
-    to{
-        transform: scale(1);
-    }
+    from{transform:scale(3);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+.clipExpand{animation:clipExpand 0.8s 1}
+@keyframes clipExpand{
+    from{clip-path: circle(0% at 50% 50%)}
+    to{clip-path: circle(50% at 50% 50%)}
 }

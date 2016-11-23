@@ -11,8 +11,10 @@ $(document).ready(function(){
         $tip.text(info)
         $bar.css({transform: 'scale(' + progress + ', 1)'})        
     }
+    
     if(!('ontouchstart' in window)) return $tip.html('桌面浏览器不支持！去看看<a href="http://cynil.github.io">静态页面</a>')
     hint('smooth正在初始化...', 0.15)
+
     var smooth = document.querySelector('main')
     window.app = new Smooth(smooth, {
         animations: {typing: typing},
@@ -38,7 +40,7 @@ $(document).ready(function(){
                     self._load(self.stages[0])
                 }
                 $loading.remove()
-            }, 400)
+            }, 1000)
         })
         .on('paging', function(e){
             var $page = $(page)
