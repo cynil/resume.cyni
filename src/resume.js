@@ -50,12 +50,26 @@ $(document).ready(function(){
 
 function typing(node, parent){
     var p = node.children[0],
-        content = p.innerHTML,
+        content = $(p).text(),
+        $dash = $('<span>_</span>'),
         index = 0
-    p.innerHTML = ''
-    parent.appendChild(node)
+    $(p).html('<span></span>').append($dash)
+    $(parent).append($(node))
     var timer = setInterval(function(){
-        p.innerHTML += content[index++]
-        if(!content[index]) clearInterval(timer)
+        if(!content[index]) {
+            $dash.remove()
+            return clearInterval(timer)
+        }
+        $(p).children('span').get(0).innerText += content[index++]
+        if($dash.is(':visible')){
+            $dash.css({visibility: 'hidden'})
+        }else{
+            $dash.css({visibility: 'visible'})
+        }
     }, 150)
 }
+
+
+
+
+

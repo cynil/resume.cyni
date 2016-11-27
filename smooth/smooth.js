@@ -40,7 +40,6 @@
 	}
 	function touch(el){
 		el = typeof el === 'string' ? document.querySelector(el) : el
-		if(!el) throw 'touch element not found'
 		return new Touch(el)
 	}
 	function cssAnimate(node, parent, klass, cb){
@@ -218,7 +217,7 @@
 				if(!stage.played){
 					stage.blocs.map(function(bloc){
 						var delay = bloc.el.getAttribute('delay') || 0
-						if(bloc.now === 'now'){
+						if(!bloc.later){
 							var clock = setTimeout(function(){								
 								//check javascript animation first
 								var possibleJSAnimation = self.animations[bloc.animation]
@@ -273,11 +272,11 @@
 
 			makeArray(rawBlocs).map(function(raw){
 				var animation = raw.getAttribute('animation') || 'expandIn',
-					now = raw.getAttribute('now')
+					later = raw.getAttribute('later') || undefined
 				
 				self.blocs.push({
 					el: self.el.removeChild(raw),
-					now: now,
+					later: later,
 					animation: animation
 				})
 			})
@@ -285,7 +284,7 @@
 
 		next: function(){
 			var currentBloc = this.blocs.filter(function(bloc){
-				    return bloc.now !== 'now'
+				    return bloc.later != undefined
 			    })[this.currentBloc],
 			    self = this
 
